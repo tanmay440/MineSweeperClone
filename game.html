@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper - {{ difficulty|title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Minesweeper - {{ difficulty|title }}</h1>
+            <div class="controls">
+                <button id="new-game">New Game</button>
+            </div>
+            <div class="game-info">
+                <div class="timer">Time: <span id="timer">0</span></div>
+                <div class="mines">Mines: <span id="mines-count">{{ mine_count }}</span></div>
+            </div>
+        </div>
+
+        <div class="game-board" id="game-board" style="--size: {{ size }}">
+            <!-- Game board will be generated here -->
+        </div>
+
+        <div class="high-scores">
+            <h2>High Scores</h2>
+            <div class="scores-container" id="scores-container">
+                <!-- High scores will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="game-over-modal">
+        <div class="modal-content">
+            <h2 id="game-over-message">Game Over!</h2>
+            <div id="final-time" style="display: none;">Time: <span id="final-time-value">0</span></div>
+            <input type="text" id="player-name" placeholder="Enter your name" style="display: none;">
+            <button id="save-score" style="display: none;">Save Score</button>
+        </div>
+    </div>
+
+    <script>
+        // Pass game settings from server to JavaScript
+        const gameSettings = {
+            difficulty: "{{ difficulty }}",
+            size: {{ size }},
+            mineCount: {{ mine_count }}
+        };
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 

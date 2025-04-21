@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minesweeper</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="game-container">
+        <div class="game-header">
+            <h1>Minesweeper</h1>
+            <div class="controls">
+                <select id="difficulty">
+                    <option value="easy">Easy (8x8, 10 mines)</option>
+                    <option value="medium" selected>Medium (10x10, 20 mines)</option>
+                    <option value="hard">Hard (12x12, 30 mines)</option>
+                </select>
+                <button id="new-game">Start New Game</button>
+            </div>
+        </div>
+
+        <div class="high-scores">
+            <h2>High Scores</h2>
+            <div class="scores-container" id="scores-container">
+                <!-- High scores will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html> 
